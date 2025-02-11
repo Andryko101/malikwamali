@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div id="error_message"></div>
+    <form action="login.php" method="post"><span>Login</span><br>
+    <label>Welcome to Mali kwa Mali. To continue please login</label><br><hr>
+    <div class="form">
+        <input class="input username" type="text-field" name="username" placeholder="Enter Username" required><br>
+        <input class="input password"  type="password" name="password" placeholder="Enter Password" required><br>
+        <a href="signup.php">forgot password?</a>
+    </div><hr>
+    <input class="input login" type="submit" name="submit" value="Login"><br>
+        <a id="signup" href="signup.php">Don't have an account? Create account</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+*{
+    font-family: sans-serif;
+}
+body{
+    background-image: url('background.jpeg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#logo{
+    background-color: rgba(32, 30, 30, 0.973);
+    text-align: center;
+}
+.content{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    gap:10px;
+}
+.img{
+    border:2px solid black;
+    width:300px;
+    min-height: 300px;
+}
+.navbar{
+    height: 50px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    position:sticky;
+    background-color: azure;
+    font-size: larger;
+}
+h2{
+    text-align: center;
+}
