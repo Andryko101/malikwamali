@@ -44,18 +44,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $role = $_POST['role'];
 
-    // ✅ Fixed SQL query
     $sql = "SELECT username, password, student_id, seller FROM user_credentials WHERE username='$username'";
     $result = mysqli_query($conn, $sql);
 
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
 
-        // ✅ Check if password is correct
         if (password_verify($password, $row['password'])) {
-            $_SESSION['student_id'] = $row['student_id']; // ✅ Set session variable
+            $_SESSION['student_id'] = $row['student_id'];
 
-            // ✅ Redirect based on role
             if ($role == 'seller' && $row['seller'] == 'yes') {
                 header("Location: seller_dashboard.php");
                 exit();
@@ -79,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($username == "admin123" && $password == "admin123") {
         $_SESSION['username'] = "Super Admin";
         $_SESSION['is_admin'] = true;
-        header("Location: admin_dashboard.php"); // Redirect to admin dashboard
+        header("Location: admin_dashboard.php");
         exit();
     }
 }
