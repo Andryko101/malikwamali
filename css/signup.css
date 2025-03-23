@@ -1,0 +1,77 @@
+/* Minimalist CSS for Signup Page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+div {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.input.login {
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.input.login:hover {
+    background: #0056b3;
+}
+
+#signup {
+    display: block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#signup:hover {
+    text-decoration: underline;
+}
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    color: #666;
+}
+

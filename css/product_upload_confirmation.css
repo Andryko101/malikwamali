@@ -1,0 +1,189 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+.header {
+    background-color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo img {
+    width: 150px;
+    height: auto;
+}
+
+.nav {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav ul li a:hover {
+    color: #FF8C00;
+}
+
+/* Product Confirmation Section Styling */
+.product-preview {
+    background-color: rgba(255, 255, 255, 0.8); /* White background with reduced opacity */
+    padding: 40px 0;
+    text-align: center;
+    color: #333;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.product-preview h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.product-preview p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.product-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.product-image img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-info h2, .product-info p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.product-info h2 span, .product-info p span {
+    font-weight: bold;
+}
+
+/* Buttons for Confirmation or Cancellation */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.cancel-button, .confirm-button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.cancel-button:hover {
+    background-color: #d32f2f;
+}
+
+.confirm-button {
+    background-color: #FF8C00;
+    color: white;
+}
+
+.confirm-button:hover {
+    background-color: #e67e00;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer p {
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-details {
+        flex-direction: column;
+    }
+
+    .product-image img {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .product-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .product-info p {
+        font-size: 1rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+.cart-btn {
+    background-color: #FF8C00;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.cart-btn:hover {
+    background-color: #e67e00;
+}
+
+.add-to-cart-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #218838;
+}

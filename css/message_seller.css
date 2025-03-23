@@ -1,0 +1,84 @@
+/* Full Page Background */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Centering the Message Box */
+.container {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Page Title */
+h2 {
+    color: #222;
+    margin-bottom: 15px;
+}
+
+/* Seller Details */
+.seller-info {
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Message Input Box */
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+textarea:focus {
+    border-color: #007bff;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        margin: 10px;
+    }
+
+    textarea {
+        font-size: 13px;
+    }
+}
