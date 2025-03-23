@@ -31,7 +31,7 @@
         <input class="input password" type="password" name="password" placeholder="Enter Password" required><br>
         <input class="input password" type="password" name="confirmpassword" placeholder="confirm Password" required><br>
         <input class="input login"type="submit" name="submit" value="Sign Up"><br>
-        <a id="signup" href="login.php">Have an account already? Login</a>
+        <a id="signup" href="index.php">Have an account already? Login</a>
 </div>
     </form>
 <<<<<<< HEAD
