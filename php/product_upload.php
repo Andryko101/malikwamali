@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <footer class="footer">
-            <p>&copy; 2025 Dedan Deals. All rights reserved.</p>
+            <p>&copy; 2025 Mali kwa Mali. All rights reserved.</p>
         </footer>
     </div>
 </body>
