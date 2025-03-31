@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
    include("database.php"); 
     session_start();
@@ -10,25 +8,11 @@
         exit();
     }
 ?>
->>>>>>> 811d51f (PHP files for malikwamali)
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Homepage</title>
-</head>
-<body>
-    <p onclick="redirectfun()">Welcome to mali-kwa-mali</p>    
-</body>
-<script type="text/javascript">
-    function redirectfun(){
-        window.location.href="categories.php";
-    }
-</script>
-</html>
-=======
     <title>Dedan Deals | Home</title>
     <link href="../css/homepage.css" rel="stylesheet">
 </head>
