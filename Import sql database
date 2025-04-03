@@ -1,0 +1,385 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 03, 2025 at 11:40 AM
+-- Server version: 8.0.40
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `mali-kwa-mali`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int NOT NULL,
+  `category_name` varchar(100) NOT NULL,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `message_id` int NOT NULL,
+  `sender_id` int DEFAULT NULL,
+  `receiver_id` int DEFAULT NULL,
+  `message_text` text,
+  `timestamp` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`message_id`, `sender_id`, `receiver_id`, `message_text`, `timestamp`) VALUES
+(1, 2099, 123, 'wjhedfcbnxmz,sxd', '2025-03-20 10:43:59'),
+(2, 2099, 123, 'Hello', '2025-03-20 11:05:12'),
+(3, 2099, 123, 'Hello', '2025-03-20 11:05:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `customer_email` varchar(255) NOT NULL,
+  `customer_address` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `customer_name`, `customer_email`, `customer_address`, `created_at`) VALUES
+(20, 1, 'Andrew', 'andymakari58@gmail.com', 'Bomas, Kimathi, Nyeri\r\nTakimu House No 102', '2025-03-20 19:15:09'),
+(21, 1, 'Stephen Leto', 'stephen@mail', 'Bomas, Kimathi, Nyeri\r\nTakimu House No 102', '2025-03-20 21:29:48'),
+(22, 1, 'Andrew Makari', 'andymakari58@gmail.com', 'Bomas, Kimathi, Nyeri\r\nTakimu House No 102', '2025-03-23 17:06:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int NOT NULL,
+  `order_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `product_name`, `product_price`) VALUES
+(16, 20, 2, 'Chair', 1000.00),
+(17, 21, 1, 'study desk', 2200.00),
+(18, 22, 6, 'Sofa', 20000.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `description` text,
+  `image` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int NOT NULL,
+  `unique_name` varchar(255) DEFAULT NULL,
+  `views` int DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `category`, `price`, `description`, `image`, `created_at`, `user_id`, `unique_name`, `views`) VALUES
+(1, 'study desk', 'study_desk', 2200.00, 'study desk in good condition', 'studyDesk.jpeg', '2025-02-13 22:09:50', 1, NULL, 0),
+(2, 'Chair', 'chair', 1000.00, 'qwert', 'chair_67b748bb9e18b.jpeg', '2025-02-20 15:22:35', 2345, 'chair_67b748bb9e825', 0),
+(3, 'Chair', 'chair', 1000.00, 'qwert', 'chair_67b748d749956.jpeg', '2025-02-20 15:23:03', 2345, 'chair_67b748d749d8a', 0),
+(4, 'Wooden table', 'kitchen_table', 3000.00, 'High quality wooden table', 'wooden_table_67dba77778ff5.jpg', '2025-03-20 05:28:23', 123, 'wooden_table_67dba77779b82', 0),
+(5, 'Sofa set', 'sofa', 20000.00, 'Black, cotton, memory foam, comfortable couch', 'sofa_set_67dba871a3be3.jpeg', '2025-03-20 05:32:33', 123, 'sofa_set_67dba871a4069', 0),
+(6, 'Sofa', 'sofa', 20000.00, 'Red leather', 'sofa_67dd79f6e6b84.jpeg', '2025-03-21 14:38:46', 123456, 'sofa_67dd79f6e89b8', 0),
+(7, '3-seater Sofa', 'sofa', 18000.00, '3-seater couch, mahogany wood, good quality', '3-seater_sofa_67e0418f34cfb.jpg', '2025-03-23 17:14:55', 123456, '3-seater_sofa_67e0418f35249', 0),
+(8, 'desk', 'study_desk', 2000.00, 'White', 'desk_67eab63880283.jpeg', '2025-03-31 15:35:20', 123, 'desk_67eab6388136a', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales`
+--
+
+CREATE TABLE `sales` (
+  `sale_id` int NOT NULL,
+  `seller_id` varchar(20) NOT NULL,
+  `product_id` int NOT NULL,
+  `order_id` int NOT NULL,
+  `sale_amount` decimal(10,2) NOT NULL,
+  `sale_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`sale_id`, `seller_id`, `product_id`, `order_id`, `sale_amount`, `sale_date`) VALUES
+(12, '2345', 2, 20, 1000.00, '2025-03-20 22:15:09'),
+(13, '2345', 1, 21, 2200.00, '2025-03-21 00:29:48'),
+(14, '2345', 6, 22, 20000.00, '2025-03-23 20:06:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seller_credentials`
+--
+
+CREATE TABLE `seller_credentials` (
+  `student_id` varchar(20) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `home` varchar(29) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `seller_credentials`
+--
+
+INSERT INTO `seller_credentials` (`student_id`, `name`, `home`) VALUES
+('123', 'Andrew Makari', 'bomas'),
+('123456', 'James Njagi', 'jutumar'),
+('2099', 'Stephen Leto', 'bomas'),
+('2345', 'study desk', 'bomas'),
+('3575', 'Water', 'bomas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_credentials`
+--
+
+CREATE TABLE `user_credentials` (
+  `id` int NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `seller` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no',
+  `status` varchar(10) NOT NULL DEFAULT 'on'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_credentials`
+--
+
+INSERT INTO `user_credentials` (`id`, `name`, `username`, `student_id`, `email`, `password`, `seller`, `status`) VALUES
+(1, 'Andrew Makari', 'Andrew', '123', 'abc@123', '$2y$10$5lhun/HX0jUWTbu0XwgLtuM.zBUPla4HCje2uUo97PfSo5fyFxi02', 'yes', 'on'),
+(9, 'messi', 'Andryko101', '112', '123@abc', '$2y$10$MFtwCaJEODbcw88m45OFd.n0qKzcFmFY.kZbdSoZbW.o4kLEHeANG', '', 'blocked'),
+(10, 'ThreadTales', 'yes', '1234', 'abc@1234', '$2y$10$5EEdvj.5YR1Dgs.4WxfX5u7Jf3aRG3xhFtbGPPZ9nLtawnlty5cFa', '', 'on'),
+(11, 'map', 'map', '000', 'abc123', '$2y$10$iswNlrMl/lLhTTG.HGI1uuuIG7opXVsV12RQoNXky43Kl8lUrZyem', '', 'on'),
+(12, 'study desk', 'mao', '2345', '123@a', '$2y$10$wGiIGikB8Xz1Z453vaYAleSoYtXAn/Ic4N7/9Wteh3pUcQdFXKSGC', 'yes', 'on'),
+(14, 'Water', 'Water', '3575', 'w@w', '$2y$10$F74cY322WGi29ECch/DJwe7vBgx8adC91m7gembK3y19WM.bjl216', 'yes', 'on'),
+(15, 'Michelle Wangari', 'michellewangari24', 'C026-01-0741/2023', 'karichelsea52@gmail.com', '$2y$10$O09K68sYPYqmcGICC8.S6u3mHv65Th2Evb2k51wSYYTAlf.0rNi2.', 'no', 'on'),
+(16, 'James Njagi', 'James1', '123456', 'james1@mail', '$2y$10$qVH.Np7FWUuY1kcMpSbynuo/GDqbbQk9MrRVlqenZn.tSqyn41yji', 'yes', 'on');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `withdrawals`
+--
+
+CREATE TABLE `withdrawals` (
+  `withdrawal_id` int NOT NULL,
+  `seller_id` varchar(20) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `withdrawal_date` datetime NOT NULL,
+  `withdrawal_method` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'Pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `category_name` (`category_name`);
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`message_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_name` (`unique_name`);
+
+--
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`sale_id`),
+  ADD KEY `seller_id` (`seller_id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `sales_ibfk_3` (`order_id`);
+
+--
+-- Indexes for table `seller_credentials`
+--
+ALTER TABLE `seller_credentials`
+  ADD PRIMARY KEY (`student_id`);
+
+--
+-- Indexes for table `user_credentials`
+--
+ALTER TABLE `user_credentials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `withdrawals`
+--
+ALTER TABLE `withdrawals`
+  ADD PRIMARY KEY (`withdrawal_id`),
+  ADD KEY `seller_id` (`seller_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `message_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `sale_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `user_credentials`
+--
+ALTER TABLE `user_credentials`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `withdrawals`
+--
+ALTER TABLE `withdrawals`
+  MODIFY `withdrawal_id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_credentials` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `sales`
+--
+ALTER TABLE `sales`
+  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `seller_credentials` (`student_id`),
+  ADD CONSTRAINT `sales_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `sales_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `withdrawals`
+--
+ALTER TABLE `withdrawals`
+  ADD CONSTRAINT `withdrawals_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `seller_credentials` (`student_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
